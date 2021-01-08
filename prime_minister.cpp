@@ -28,8 +28,10 @@ void solve() {
         cin >> arr[i];
         sum += arr[i];
     }
-    int majority  = ceil(double(sum/2ll));
-
+    int majority  = ceil((double) sum / (double) 2.f);
+    int temp = sum/2;
+    if(majority == temp)
+        majority++;
     int formation_majority = 0;
     formation_majority = arr[0];
     vector<int> party_index;
