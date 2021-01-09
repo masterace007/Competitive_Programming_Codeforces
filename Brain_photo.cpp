@@ -9,29 +9,39 @@
 #define FASTIO     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 
 using namespace std;
-using namespace chrono;
 
 void solve() {
-	
+	int n,m;
+	cin >> n >> m;
+	char arr[n][m];
+	for(int i = 0; i < n; ++i){
+		for(int j = 0; j < m ; ++j){
+			cin >> arr[i][j];
+		}
+	}
+
+
+	for(int i = 0; i < n; ++i){
+		for(int j = 0; j < m; ++j){
+			if(arr[i][j] == 'C' || arr[i][j] == 'Y'|| arr[i][j] == 'M' ){
+				cout<<"#Color"<<endl;
+				return;
+			}
+		}
+	}
+	cout<<"#Black&White"<<endl;
 }
 
 int32_t main() {
-	FASTIO;
+	FASTIO;/*
 #ifndef ONLINE_JUDGE
-    freopen("Input.txt", "r", stdin);
-    freopen("Output.txt", "w", stdout);
-    freopen("Error.txt", "w", stderr);
-#endif
-    auto start1 = high_resolution_clock::now();
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif*/
 	int t = 1;
-	cin >> t;
+	//cin >> t;
 	while (t--) {
 		solve();
 	}
-	auto stop1 = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop1 - start1);
-#ifndef ONLINE_JUDGE
-    cerr << "Time: " << duration.count() / 1000 << endl;
-#endif
 	return 0;
 }
