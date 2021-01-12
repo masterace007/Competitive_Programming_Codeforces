@@ -1,4 +1,4 @@
-#include "bits/stdc++.h"
+#include<bits/stdc++.h>
 #define endl       '\n'
 #define pb         push_back
 #define mod        1000000007
@@ -12,7 +12,31 @@ using namespace std;
 using namespace chrono;
 
 void solve() {
-	cout<<"Hello"<<endl;
+	int n,m;
+	cin >> n >> m;
+	int correct[n],wrong[m];
+	for(int i = 0; i < n; ++i)
+		cin >> correct[i];
+	for(int i = 0; i < m; ++i)
+		cin >> wrong[i];
+	sort(correct,correct+n);
+	sort(wrong,wrong+m);
+	if(correct[0] == correct[n-1]){
+		if(correct[0]*2 < wrong[0])
+			cout<<correct[0]*2<<endl;
+		else
+			cout<<-1<<endl;
+	}
+	else{
+		int num = correct[0]*2;
+		int tl = max(num,correct[n-1]);
+		if( tl < wrong[0] && correct[n-1] < wrong[0]){
+			cout<<tl<<endl;
+		}
+		else
+			cout<<-1<<endl;
+
+	}
 }
 
 int32_t main() {
@@ -24,7 +48,7 @@ int32_t main() {
 #endif 
     auto start1 = high_resolution_clock::now();
 	int t = 1;
-	cin >> t;
+	//cin >> t;
 	while (t--) {
 		solve();
 	}

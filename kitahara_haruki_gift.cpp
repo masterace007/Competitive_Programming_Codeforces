@@ -12,19 +12,44 @@ using namespace std;
 using namespace chrono;
 
 void solve() {
-	cout<<"Hello"<<endl;
+	int n;
+	cin >> n;
+	int arr[n];
+	map<int,int> arr_map;
+	int sum = 0;
+	for(int i = 0 ; i < n; ++i){
+		cin >> arr[i];
+		arr[i] /= 100;
+		if(arr_map.find(arr[i]) == arr_map.end())
+			arr_map.insert(make_pair(arr[i],1));
+		else
+			arr_map[arr[i]]++;
+		sum += arr[i];
+	}
+	if(sum % 2 == 0){
+		if(arr_map.count(2) && arr_map.count(1))
+			cout<<"YES"<<endl;
+		else{
+			if(!arr_map.count(1) && arr_map[2] % 2 == 0)
+				cout<<"YES"<<endl;
+			else{
+				if(arr_map.count(1) && arr_map[1] % 2 == 0)
+					cout<<"YES"<<endl;
+				else
+					cout<<"NO"<<endl;
+			}
+		}
+
+	}
+	else
+		cout<<"NO"<<endl;
 }
 
 int32_t main() {
-	FASTIO;
-#ifndef ONLINE_JUDGE
-    freopen("Input.txt", "r", stdin);
-    freopen("Output.txt", "w", stdout);
-    freopen("Error.txt", "w", stderr);
-#endif 
+	FASTIO; 
     auto start1 = high_resolution_clock::now();
 	int t = 1;
-	cin >> t;
+	//cin >> t;
 	while (t--) {
 		solve();
 	}

@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include "bits/stdc++.h"
 #define endl       '\n'
 #define pb         push_back
 #define mod        1000000007
@@ -9,44 +9,52 @@
 #define FASTIO     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 
 using namespace std;
+using namespace chrono;
 
 void solve() {
-	string str;
-	cin >> str;
-	int num = stoi(str);
-	if(str.length() == 1)
-		cout<<str<<endl;
-	else{
-	    while(true){
-			str = to_string(num);
-			int counter = 0;
-			for(int i = 0; i < str.length(); ++i){
-				int divisor = str[i]-'0';
-				if(num % divisor != 0){
-					counter = 1;
+	int n;
+	cin >> n;
+	int result = n;
+	while(true){
+		string str = to_string(result);
+		bool flag = true;
+		for(int i = 0; i < str.length(); ++i){
+			if(str[i] == '0')
+				continue;
+			else{
+				if(result % (str[i]- '0') != 0){
+					flag = false;
 					break;
 				}
 			}
-			if(!counter){
-				cout<<num<<endl;
-				return;
-			}
-			num++;
+			if(!flag)
+				break;
 		}
+		if(flag)
+			break;
+		result++;
 	}
-	return;
+	cout<<result<<endl;
+
 }
 
 int32_t main() {
-	FASTIO;/*
+	FASTIO;
 #ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif*/
+    freopen("Input.txt", "r", stdin);
+    freopen("Output.txt", "w", stdout);
+    freopen("Error.txt", "w", stderr);
+#endif 
+    auto start1 = high_resolution_clock::now();
 	int t = 1;
 	cin >> t;
 	while (t--) {
 		solve();
 	}
+	auto stop1 = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop1 - start1);
+#ifndef ONLINE_JUDGE
+    cerr << "Time: " << duration.count() / 1000 << endl;
+#endif
 	return 0;
 }

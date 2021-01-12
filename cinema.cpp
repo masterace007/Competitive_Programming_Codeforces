@@ -12,19 +12,45 @@ using namespace std;
 using namespace chrono;
 
 void solve() {
-	cout<<"Hello"<<endl;
+	int n;
+	cin >> n;
+	int arr[n];
+	for(int i = 0; i < n; ++i)
+		cin >> arr[i];
+	int money[101] = {0};
+	
+	for(int i = 0; i < n; ++i){
+		if(arr[i] == 25)
+			money[25]++;
+		else if(arr[i] == 50){
+			money[50]++;
+			if(money[25] > 0)
+				money[25]--;
+			else{
+				cout<<"NO"<<endl;
+				return;
+			}
+		}else{
+			money[100]++;
+			if(money[50] > 0 && money[25] > 0){
+				money[50]--;
+				money[25]--;
+			}else if(money[25] >= 3)
+			money[25] -= 3;
+			else{
+				cout<<"NO"<<endl;
+				return;
+			}
+		}
+	}	
+	cout<<"YES"<<endl;
 }
 
 int32_t main() {
-	FASTIO;
-#ifndef ONLINE_JUDGE
-    freopen("Input.txt", "r", stdin);
-    freopen("Output.txt", "w", stdout);
-    freopen("Error.txt", "w", stderr);
-#endif 
+	FASTIO; 
     auto start1 = high_resolution_clock::now();
 	int t = 1;
-	cin >> t;
+	//cin >> t;
 	while (t--) {
 		solve();
 	}

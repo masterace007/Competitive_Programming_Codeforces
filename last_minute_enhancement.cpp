@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include "bits/stdc++.h"
 #define endl       '\n'
 #define pb         push_back
 #define mod        1000000007
@@ -9,60 +9,40 @@
 #define FASTIO     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 
 using namespace std;
+using namespace chrono;
 
 void solve() {
 	int n;
 	cin >> n;
-	int arr[n];
-	for(int i = 0; i < n; ++i)
-		cin >> arr[i];
-	sort(arr,arr+n);
-	arr[n-1]++;
-	set<int> arr_set;
-	map<int,int> arr_map;
-	for(int i = 0; i < n; ++i)
-		arr_set.insert(arr[i]);
-	for(int i = 0; i < n; ++i)
-		if(arr_map.find(arr[i])==arr_map.end())
-			arr_map.insert(make_pair(arr[i],1));
-		else
-			arr_map[arr[i]]++;
-
-	int count = 0;
-	for(auto x : arr_map){
-		if(x.second == 1)
-			
-		else{
-			bool flag = false;
-			for(int i = 0; i < n ; ++i){
-				if(x.first+1 == arr[i]){
-					flag = true;
-					arr_map[arr[i]]++;
-					count++;
-					break;
-				}
-			}
-			if(!flag)
-				count++;
-		}
-}
-
-for(int i = 0 ; i < n ; ++i)
-	arr_set.insert(arr[i]);
-cout<<arr_set.size()<<endl;
+	set<int> arr;
+	for(int i = 0; i < n; ++i){
+		int a;
+		cin >> a;
+		if(arr.count(a))
+			a++;
+		arr.insert(a);
+	}
+	cout<<arr.size()<<endl;
 
 }
 
 int32_t main() {
-FASTIO;/*
+	FASTIO;
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
-#endif*/
+    freopen("Input.txt", "r", stdin);
+    freopen("Output.txt", "w", stdout);
+    freopen("Error.txt", "w", stderr);
+#endif 
+    auto start1 = high_resolution_clock::now();
 	int t = 1;
 	cin >> t;
 	while (t--) {
 		solve();
 	}
+	auto stop1 = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop1 - start1);
+#ifndef ONLINE_JUDGE
+    cerr << "Time: " << duration.count() / 1000 << endl;
+#endif
 	return 0;
 }

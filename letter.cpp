@@ -12,19 +12,45 @@ using namespace std;
 using namespace chrono;
 
 void solve() {
-	cout<<"Hello"<<endl;
+	string str;
+	getline(cin,str);
+	map<char,int> str_map;
+	for(int i = 0; i < str.length(); ++i){
+		if(str[i] == ' ')
+			continue;
+		if(str_map.find(str[i]) == str_map.end())
+			str_map.insert(make_pair(str[i],1));
+		else
+			str_map[str[i]]++;
+	}
+	string letter;
+	getline(cin,letter);
+
+	for(int i = 0; i < letter.length(); ++i){
+		if(letter[i] == ' ')
+			continue;
+		else{
+			if(str_map.find(letter[i]) == str_map.end()){
+				cout<<"NO";
+				return;
+			}else{
+				if(str_map[letter[i]] > 0)
+					str_map[letter[i]]--;
+				else{
+					cout<<"NO"<<endl;
+					return;
+				}
+			}
+		}
+	}
+	cout<<"YES"<<endl;
 }
 
 int32_t main() {
-	FASTIO;
-#ifndef ONLINE_JUDGE
-    freopen("Input.txt", "r", stdin);
-    freopen("Output.txt", "w", stdout);
-    freopen("Error.txt", "w", stderr);
-#endif 
+	FASTIO; 
     auto start1 = high_resolution_clock::now();
 	int t = 1;
-	cin >> t;
+	//cin >> t;
 	while (t--) {
 		solve();
 	}

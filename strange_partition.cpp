@@ -1,4 +1,4 @@
-#include "bits/stdc++.h"
+#include<bits/stdc++.h>
 #define endl       '\n'
 #define pb         push_back
 #define mod        1000000007
@@ -12,7 +12,22 @@ using namespace std;
 using namespace chrono;
 
 void solve() {
-	cout<<"Hello"<<endl;
+	int n,x;
+	cin >> n >> x;
+	int arr[n];
+	int sum = 0;
+	int max_beauty = 0;
+	int min_beauty = 0;
+	for(int i = 0; i < n; ++i){
+		cin >> arr[i];
+		sum += arr[i];
+
+		int num = ceil((double)arr[i]/x);
+		max_beauty += num;
+	}
+	min_beauty = ceil((double_t)sum/x);
+	cout<<min_beauty<<" "<<max_beauty<<endl;
+
 }
 
 int32_t main() {

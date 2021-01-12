@@ -12,19 +12,18 @@ using namespace std;
 using namespace chrono;
 
 void solve() {
-	cout<<"Hello"<<endl;
+	int a,b,c;
+	int s1,s2,s3;
+	cin >> s1 >> s2 >> s3;
+	a = sqrt(s1*s3/s2);b = sqrt(s1*s2/s3);c = sqrt(s2*s3/s1);
+	cout<<4*(a+b+c)<<endl;
 }
 
 int32_t main() {
-	FASTIO;
-#ifndef ONLINE_JUDGE
-    freopen("Input.txt", "r", stdin);
-    freopen("Output.txt", "w", stdout);
-    freopen("Error.txt", "w", stderr);
-#endif 
+	FASTIO; 
     auto start1 = high_resolution_clock::now();
 	int t = 1;
-	cin >> t;
+	//cin >> t;
 	while (t--) {
 		solve();
 	}
